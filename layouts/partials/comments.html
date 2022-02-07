@@ -123,6 +123,33 @@
   </script>
   {{- end }}
 
+  <!-- waline -->
+  {{- if .Site.Params.waline.enable -}}
+  <!-- id 将作为查询条件 -->
+    <!-- {{- if .Site.Params.valine.visitor -}}
+	  <span id="{{ .RelPermalink | relURL }}" class="leancloud_visitors" data-flag-title="{{ .Title }}">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+    {{- end }} -->
+  <div id="waline"></div>
+  <script src="//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js"></script>
+  <script type="text/javascript">
+    new Waline({
+        el: '#waline' ,
+        serverURL: '{{ .Site.Params.waline.serverURL }}'
+        // appId: '{{ .Site.Params.valine.appId }}',
+        // appKey: '{{ .Site.Params.valine.appKey }}',
+        // notify: {{ .Site.Params.valine.notify }},
+        // verify: {{ .Site.Params.valine.verify }},
+        // avatar:'{{ .Site.Params.valine.avatar }}',
+        // placeholder: '{{ .Site.Params.valine.placeholder }}',
+        // visitor: {{ .Site.Params.valine.visitor }}
+    });
+  </script>
+  {{- end }}
+
   <!-- utterances -->
   {{- if .Site.Params.utterances.owner}}
     <script src="https://utteranc.es/client.js"
