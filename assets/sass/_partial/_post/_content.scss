@@ -38,7 +38,11 @@
       }
     }
   }
-
+  p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    text-indent: 2rem;
+  }
   a {
     color: $theme-color;
     word-break: break-all;
@@ -63,7 +67,13 @@
 
     p {
       margin: 0;
+      text-indent: 0rem;
     }
+  }
+
+  ul, ol, dl {
+    margin-left: 1rem;
+    p {text-indent: 0;}
   }
 
   img {
