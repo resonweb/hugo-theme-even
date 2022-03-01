@@ -133,20 +133,30 @@
 		<p></p>
 	  </span>
     {{- end }} -->
-  <div id="waline"></div>
-  <script src="//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js"></script>
+  <div id="waline" style="border-style: dotted;border-width: 2px;padding: auto auto;text-align: center;padding-bottom: 10px;">
+    <p id="comment_alert">如果你想看评论，或者有想对作者说的话，请点击按键。</p>
+    <button id="open_comment" style="color: #c05b4d;">展开评论区</button>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js"></script>
   <script type="text/javascript">
-    new Waline({
-        el: '#waline' ,
-        serverURL: '{{ .Site.Params.waline.serverURL }}'
-        // appId: '{{ .Site.Params.valine.appId }}',
-        // appKey: '{{ .Site.Params.valine.appKey }}',
-        // notify: {{ .Site.Params.valine.notify }},
-        // verify: {{ .Site.Params.valine.verify }},
-        // avatar:'{{ .Site.Params.valine.avatar }}',
-        // placeholder: '{{ .Site.Params.valine.placeholder }}',
-        // visitor: {{ .Site.Params.valine.visitor }}
-    });
+    function walineStart(){
+      new Waline({
+          el: '#waline' ,
+          serverURL: '{{ .Site.Params.waline.serverURL }}'
+          // appId: '{{ .Site.Params.valine.appId }}',
+          // appKey: '{{ .Site.Params.valine.appKey }}',
+          // notify: {{ .Site.Params.valine.notify }},
+          // verify: {{ .Site.Params.valine.verify }},
+          // avatar:'{{ .Site.Params.valine.avatar }}',
+          // placeholder: '{{ .Site.Params.valine.placeholder }}',
+          // visitor: {{ .Site.Params.valine.visitor }}
+      });
+    };
+    document.getElementById("open_comment").onclick = function(){
+      document.getElementById("waline").innerHTML = "nothing";
+      document.getElementById("waline").style = ""
+      walineStart();
+    };
   </script>
   {{- end }}
 
